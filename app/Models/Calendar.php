@@ -7,6 +7,18 @@ use Illuminate\Database\Eloquent\Model;
 
 class Calendar extends Model
 {
+    protected $fillable = [
+        'year',
+        'circuit_id'
+    ];
+
+    protected $dates = [
+        'startDate',
+        'endDate',
+    ];
+
+    public $timestamps = false;
+
     public function circuit(){
         return $this->belongsTo(Circuit::class);
     }

@@ -19,3 +19,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::apiResource('pilotes', \App\Http\Controllers\Api\PiloteController::class);
+Route::apiResource('circuits', \App\Http\Controllers\Api\CircuitController::class);
+Route::apiResource('calendars', \App\Http\Controllers\Api\CalendarController::class);

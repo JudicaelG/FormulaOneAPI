@@ -15,11 +15,11 @@ class PiloteResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'pilote_id' => $this->id,
-            'pilote_firstName' => $this->firstName,
-            'pilote_lastName' => $this->lastName,
-            'pilote_number' => $this->number,
-            'pilote_photo' => $this->photo,
+            'id' => $this->id,
+            'firstName' => $this->firstName,
+            'lastName' => $this->lastName,
+            'number' => $this->number,
+            'photo' => $this->photo,
         ];
     }
 }
