@@ -19,6 +19,9 @@ class Pilote extends Migration
             $table->string('lastName');
             $table->integer('number');
             $table->string('photo')->nullable($value = true);
+            $table->string('nationality')->nullable($value = true);
+            $table->date('birthday')->nullable($value = true);
+            $table->string('team')->nullable($value = true);
         });
     }
 

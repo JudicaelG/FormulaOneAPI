@@ -4,6 +4,15 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
+/**
+ * @OA\Schema(
+ *     title="PiloteResource",
+ *     description="Pilote resource",
+ *     @OA\Xml(
+ *         name="PiloteResource"
+ *     )
+ * )
+ */
 class PiloteResource extends JsonResource
 {
     /**
@@ -20,6 +29,9 @@ class PiloteResource extends JsonResource
             'lastName' => $this->lastName,
             'number' => $this->number,
             'photo' => $this->photo,
+            'birthday' => $this->birthday,
+            'nationality' => $this->nationality,
+            'team' => $this->team,
         ];
     }
 }

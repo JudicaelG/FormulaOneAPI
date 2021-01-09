@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\CalendarResource;
@@ -34,9 +34,13 @@ class CalendarController extends Controller
         $calendar->year = $request->get('year');
         $calendar->startDate = \date('Y-m-d', strtotime($request->get('startDate')));
         $calendar->endDate = \date('Y-m-d', strtotime($request->get('endDate')));
-        $circuit = Circuit::find($request->get("circuit_id"));
+        //dd($request->get('pilote_id'));
 
-        return new CalendarResource($circuit->calendars()->save($calendar));
+
+        $circuit = Circuit::find($request->get("circuit_id"));
+        $circuit->calendars()->save($calendar);
+        $calendar->pilotes()->attach($request->get('pilote_id'));
+        return new CalendarResource($calendar);
     }
 
     /**

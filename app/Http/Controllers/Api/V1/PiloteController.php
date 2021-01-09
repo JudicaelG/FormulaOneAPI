@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\PiloteResource;
@@ -13,7 +13,21 @@ class PiloteController extends Controller
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
+     *
+     * @OA\Get(
+     *     path="/v1/pilotes",
+     *     operationId="getPilotesList",
+     *     tags={"Pilotes"},
+     *     summary="Get list of pilotes",
+     *     description="Returns list of pilotes",
+     *     @OA\Response(
+     *     response=200,
+     *     description="Successful operation",
+     *
+     *      )
+     * )
      */
+
     public function index()
     {
         $pilotes = Pilote::all();
@@ -28,7 +42,17 @@ class PiloteController extends Controller
      */
     public function store(Request $request)
     {
-        return new PiloteResource(Pilote::create($request->all()));
+        //dd($request->get('firstName'));
+        $pilote = new Pilote();
+        $pilote->firstName = $request->get('firstName');
+        $pilote->lastName = $request->get('lastName');
+        $pilote->number = $request->get('number');
+        $pilote->photo = $request->get('photo');
+        $pilote->nationality = $request->get('nationality');
+        $pilote->birthday = \date('Y-m-d', strtotime($request->get('birthday')));
+        $pilote->team = $request->get('team');
+        $pilote->save();
+        return new PiloteResource($pilote);
     }
 
     /**

@@ -24,7 +24,7 @@ class Calendar extends Model
     }
 
     public function pilotes(){
-        return $this->morphToMany(Pilote::class, 'competitors');
+        return $this->belongsToMany(Pilote::class);
     }
 
     public function subevents(){

@@ -20,7 +20,8 @@ class CalendarResource extends JsonResource
             'year' => $this->year,
             'startDate' => $this->startDate,
             'endDate' => $this->endDate,
-            'circuit' => $this->circuit
+            'circuit' => $this->circuit,
+            'pilotes' => $this->pilotes,
         ];
     }
 }

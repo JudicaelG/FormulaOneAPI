@@ -5,19 +5,23 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+
 class Pilote extends Model
 {
     protected $fillable = [
         'firstName',
         'lastName',
         'number',
-        'photo'
+        'photo',
+        'nationality',
+        'team',
+        'birthday',
     ];
 
     public $timestamps = false;
 
     public function calendars(){
-        return $this->morphedByMany(Calendar::class, 'competitors');
+        return $this->belongsToMany(Calendar::class);
     }
 
     public function results(){

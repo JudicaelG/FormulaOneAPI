@@ -13,7 +13,7 @@ class PiloteCalendar extends Migration
      */
     public function up()
     {
-        Schema::create('pilote_calendar', function(Blueprint $table){
+        Schema::create('calendar_pilote', function(Blueprint $table){
             $table->id();
             $table->unsignedBigInteger('calendar_id');
             $table->foreign('calendar_id')
@@ -37,6 +37,6 @@ class PiloteCalendar extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('calendar_pilote');
     }
 }
