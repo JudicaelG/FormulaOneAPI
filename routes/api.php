@@ -18,6 +18,14 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::apiResource('pilotes', \App\Http\Controllers\Api\PiloteController::class);
-Route::apiResource('circuits', \App\Http\Controllers\Api\CircuitController::class);
-Route::apiResource('calendars', \App\Http\Controllers\Api\CalendarController::class);
+Route::group([
+    'prefix' => 'v1',
+    'as' => 'api.',
+], function () {
+    Route::apiResource('pilotes', \App\Http\Controllers\Api\V1\PiloteController::class);
+
+});
+
+//Route::apiResource('v1/pilotes', \App\Http\Controllers\Api\V1\PiloteController::class);
+Route::apiResource('circuits', \App\Http\Controllers\Api\V1\CircuitController::class);
+Route::apiResource('calendars', \App\Http\Controllers\Api\V1\CalendarController::class);
